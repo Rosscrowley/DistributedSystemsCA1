@@ -1,9 +1,13 @@
 package com.example.dit;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.example.dit.model.Deposit;
+
 
 public class DepositDAO {
 
@@ -39,4 +43,26 @@ public class DepositDAO {
 		em.close();
 		return updatedDeposit;
 	}
+	
+	public List<Deposit> getAllDeposits(){
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		List<Deposit> deposits = new ArrayList<Deposit>();
+		deposits = em.createQuery("from Deposit").getResultList();
+		em.getTransaction().commit();
+		em.close();
+		return deposits;
+	}
+	
+	public Deposit getDepositByID(int id) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Deposit d = em.createQuery("SELECT p FROM Deposit p WHERE p.id = :id", Deposit.class)
+                .setParameter("id", id)
+                .getSingleResult();
+		em.getTransaction().commit();
+		em.close();
+		return d;
+	}
+	
 }

@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "deposit")
 @Entity
 public class Deposit {
 	
@@ -25,6 +28,7 @@ public class Deposit {
 		this.amount = amount;
 	}
 
+	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -33,6 +37,7 @@ public class Deposit {
 		this.id = id;
 	}
 
+	@XmlElement
 	public String getDate() {
 		return date;
 	}
@@ -41,6 +46,7 @@ public class Deposit {
 		this.date = date;
 	}
 
+	@XmlElement
 	public int getAmount() {
 		return amount;
 	}

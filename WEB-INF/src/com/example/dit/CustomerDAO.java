@@ -75,6 +75,4 @@ public Customer getCustomerById(int id){
 	return c;
 	
 }
-
-
 }

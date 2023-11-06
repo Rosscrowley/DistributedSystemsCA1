@@ -9,7 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "loan")
 @Entity
 public class Loan {
 	
@@ -40,7 +43,10 @@ public class Loan {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
 
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
@@ -49,6 +55,7 @@ public class Loan {
 		this.description = description;
 	}
 
+	@XmlElement
 	public int getAmount() {
 		return amount;
 	}
@@ -57,12 +64,20 @@ public class Loan {
 		this.amount = amount;
 	}
 
+	@XmlElement
 	public List<Deposit> getDeposits() {
 		return deposits;
 	}
 
 	public void setDeposits(List<Deposit> deposits) {
 		this.deposits = deposits;
+	}
+
+	public void addDeposit(Deposit deposit) {
+		// TODO Auto-generated method stub
+		
+		this.deposits.add(deposit);
+		
 	}
 	
 	
